@@ -1,9 +1,9 @@
-% 課題９ メディアンフィルタと先鋭化
+../images/pengin.png% 課題９ メディアンフィルタと先鋭化
 % メディアンフィルターを適用し，ノイズ除去を体験せよ．
 % 各自，Lenna以外の画像を用いよ．
 % 例
 
-ORG = imread('https://www.pakutaso.com/shared/img/thumb/NISSIHIGEPENGIN_TP_V.jpg'); % 画像の読み込み
+ORG = imread('../images/pengin.png'); % 画像の読み込み
 ORG = rgb2gray(ORG); % 白黒濃淡画像に変換
 imagesc(ORG); colormap(gray); colorbar; % 画像の表示
 pause;
