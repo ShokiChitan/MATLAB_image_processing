@@ -2,7 +2,7 @@
 
 フリー画像「ahhiru」を原画像とする．この画像は縦531画素，横800画素のディジタルカラー画像である．
 
-ORG = imread('../images/pengin.png'); % 画像の読み込み
+ORG = imread('../images/ahiru.png'); % 画像の読み込み
 ORG = rgb2gray(ORG); % 白黒濃淡画像に変換
 imagesc(ORG); colormap(gray); colorbar; % 画像の表示
 pause;
@@ -65,7 +65,7 @@ imhist(ORG); % 濃度ヒストグラムを生成、表示
 #### [ソースコード](https://github.com/ShokiChitan/MATLAB_image_processing/blob/master/%E8%AA%B2%E9%A1%8C7/kadai7.m)
 
 ### 考察
-
-
+濃度ヒストグラムの結果を比較してみると、若干ではあるが，ダイナミックレンジに変換した方が範囲が広がっていることがわかる．
 また，
 ORG = uint8(ORG);
+は，濃度を8ビット符号なし整数に変換している．これによって濃度範囲を拡大し，ヒストグラムにおいて濃度範囲を拡大することができる．

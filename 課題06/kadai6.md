@@ -3,7 +3,7 @@
 フリー画像「ahhiru」を原画像とする．この画像は縦531画素，横800画素のディジタルカラー画像である．
 
 clear; % 変数のオールクリア
-ORG=imread('../images/pengin.png'); % 原画像の入力
+ORG=imread('../images/ahiru.png'); % 原画像の入力
 ORG = rgb2gray(ORG);
 imagesc(ORG); colormap(gray); colorbar; % 画像の表示
 pause; % 一時停止

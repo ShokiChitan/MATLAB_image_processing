@@ -2,7 +2,7 @@
 
 フリー画像「ahhiru」を原画像とする．この画像は縦531画素，横800画素のディジタルカラー画像である．
 
-ORG=imread('../images/pengin.png'); % 原画像の入力
+ORG=imread('../images/ahiru.png'); % 原画像の入力
 ORG = rgb2gray(ORG); % カラー画像を白黒濃淡画像へ変換
 imagesc(ORG); colormap(gray); colorbar;
 pause;
