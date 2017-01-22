@@ -1,49 +1,60 @@
-../images/ahiru.png﻿# 課題１レポート（サンプル）
+# 課題５「判別分析法」
 
-標準画像「Lenna」を原画像とする．この画像は縦512画像，横512画素による正方形のディジタルカラー画像である．
+フリー画像「ahhiru」を原画像とする．この画像は縦531画素，横800画素のディジタルカラー画像である．
 
-ORG=imread('../images/ahiru.png'); % 原画像の入力  
-imagesc(ORG); axis image; % 画像の表示
+ORG=imread('../images/pengin.png'); % 原画像の入力
+ORG = rgb2gray(ORG); % カラー画像を白黒濃淡画像へ変換
+imagesc(ORG); colormap(gray); colorbar;
+pause;
 
-によって，原画像を読み込み，表示した結果を図１に示す．
+によって，原画像を読み込み，表示した結果を図1に示す．
 
-![原画像](https://github.com/mackhasegawa/lecture_image_processing/blob/master/image/org_img.png?raw=true)  
-図1 原画像
+![原画像](https://github.com/ShokiChitan/MATLAB_image_processing/blob/master/%E8%AA%B2%E9%A1%8C5/images/a1.jpg?raw=true)  
+図1 原画像(ahiru)
 
-原画像を1/2サンプリングするには，画像を1/2倍に縮小した後，2倍に拡大すればよい．なお，拡大する際には，単純補間するために「box」オプションを設定する．
+原画像に対して，画素数や平均分散を計算し，クラス内分散・クラス間分散を求めることで，判別分析法を用いて2値化できる．
 
-IMG = imresize(ORG,0.5); % 画像の縮小  
-IMG2 = imresize(IMG,2,'box'); % 画像の拡大
+H = imhist(ORG); %ヒストグラムのデータを列ベクトルEに格納
+myu_T = mean(H);
+max_val = 0;
+max_thres = 1;
+for i=1:255
+C1 = H(1:i); %ヒストグラムを2つのクラスに分ける
+C2 = H(i+1:256);
+n1 = sum(C1); %画素数の算出
+n2 = sum(C2);
+myu1 = mean(C1); %平均値の算出
+myu2 = mean(C2);
+sigma1 = var(C1); %分散の算出
+sigma2 = var(C2);
+sigma_w = (n1 *sigma1+n2*sigma2)/(n1+n2); %クラス内分散の算出
+sigma_B = (n1 *(myu1-myu_T)^2+n2*(myu2-myu_T)^2)/(n1+n2); %クラス間分散の算出
+if max_val<sigma_B/sigma_w
+max_val = sigma_B/sigma_w;
+max_thres =i;
+end;
+end;
 
-1/2サンプリングの結果を図２に示す．
+IMG = ORG > max_thres;
+imagesc(IMG); colormap(gray); colorbar;
+pause;
 
-![原画像](https://github.com/mackhasegawa/lecture_image_processing/blob/master/image/kadai1_1.png?raw=true)  
-図2 1/2サンプリング
+2値化の結果を図2に示す．
 
-同様に原画像を1/4サンプリングするには，画像を1/2倍に縮小した後，2倍に拡大すればよい．すなわち，
+![原画像](https://github.com/ShokiChitan/MATLAB_image_processing/blob/master/%E8%AA%B2%E9%A1%8C5/images/a2.jpg?raw=true)  
+図2 2値化画像
 
-IMG = imresize(ORG,0.5); % 画像の縮小  
-IMG2 = imresize(IMG,2,'box'); % 画像の拡大
+同様に，フリー画像「pengin」(縦1066画素，横1600画素のディジタルカラー画像)を原画像(図3)として実行した結果を図4に示す．
 
-とする．1/4サンプリングの結果を図３に示す．
+![原画像](https://github.com/ShokiChitan/MATLAB_image_processing/blob/master/%E8%AA%B2%E9%A1%8C5/images/p1.jpg?raw=true)  
+図3 原画像(pengin)
 
-![原画像](https://github.com/mackhasegawa/lecture_image_processing/blob/master/image/kadai1_2.png?raw=true)  
-図3 1/4サンプリング
+![原画像](https://github.com/ShokiChitan/MATLAB_image_processing/blob/master/%E8%AA%B2%E9%A1%8C5/images/p2.jpg?raw=true)  
+図4 2値化画像
 
-1/8から1/32サンプリングは，
+ソースコードのリンクを以下に添付する．
 
-IMG = imresize(ORG,0.5); % 画像の縮小  
-IMG2 = imresize(IMG,2,'box'); % 画像の拡大
+#### [ソースコード](https://github.com/ShokiChitan/MATLAB_image_processing/blob/master/%E8%AA%B2%E9%A1%8C5/kadai5.m)
 
-を繰り返す．サンプリングの結果を図４～６に示す．
-
-![原画像](https://github.com/mackhasegawa/lecture_image_processing/blob/master/image/kadai1_3.png?raw=true)  
-図4 1/8サンプリング
-
-![原画像](https://github.com/mackhasegawa/lecture_image_processing/blob/master/image/kadai1_4.png?raw=true)  
-図5 1/16サンプリング
-
-![原画像](https://github.com/mackhasegawa/lecture_image_processing/blob/master/image/kadai1_5.png?raw=true)  
-図6 1/32サンプリング
-
-このようにサンプリング幅が大きくなると，モザイク状のサンプリング歪みが発生する．
+### 考察
+ahiruの画像では，アヒル自身の色は白で背景は暗い色であるため，背景との違いが分かるように2値化されている．しかし，アヒルの画像のくちばし付近やpenginの画像では，うまく2値化することができていない．これは，体の色や影になった部分と背景の色が近かったためであると思われる．
