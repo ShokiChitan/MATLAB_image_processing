@@ -7,7 +7,7 @@ ORG = rgb2gray(ORG); colormap(gray); colorbar; % グレースケール化
 imagesc(ORG); axis image; % 画像の表示
 pause; % 一時停止
 
-によって，原画像を読み込み，表示した結果を図１に示す．
+によって，原画像を読み込み，表示した結果を図1に示す．
 
 ![原画像](https://github.com/ShokiChitan/MATLAB_image_processing/blob/master/%E8%AA%B2%E9%A1%8C2/images/a1.jpg?raw=true)  
 図1 原画像(ahiru)
@@ -18,7 +18,7 @@ IMG = ORG>128;
 imagesc(IMG); colormap(gray); colorbar;  axis image;
 pause;
 
-2階調画像を図２に示す．
+2階調画像を図2に示す．
 
 ![原画像](https://github.com/ShokiChitan/MATLAB_image_processing/blob/master/%E8%AA%B2%E9%A1%8C2/images/a2.jpg?raw=true)  
 図2 2階調画像
@@ -32,7 +32,7 @@ IMG = IMG0 + IMG1 + IMG2;
 imagesc(IMG); colormap(gray); colorbar;  axis image;
 pause;
 
-4階調画像を図３に示す．
+4階調画像を図3に示す．
 
 ![原画像](https://github.com/ShokiChitan/MATLAB_image_processing/blob/master/%E8%AA%B2%E9%A1%8C2/images/a3.jpg?raw=true)  
 図3 4階調画像
@@ -54,7 +54,7 @@ imagesc(IMG); colormap(gray); colorbar;  axis image;
 ![原画像](https://github.com/ShokiChitan/MATLAB_image_processing/blob/master/%E8%AA%B2%E9%A1%8C2/images/a4.jpg?raw=true)  
 図4 8階調画像
 
-同様に，フリー画像「pengin」(縦1066画素，横1600画素のディジタルカラー画像)を原画像(図8)としてサンプリングを行った結果を図9～14に示す．
+同様に，フリー画像「pengin」(縦1066画素，横1600画素のディジタルカラー画像)を原画像(図5)として実行した結果を図6～8に示す．
 
 ![原画像](https://github.com/ShokiChitan/MATLAB_image_processing/blob/master/%E8%AA%B2%E9%A1%8C2/images/p1.jpg?raw=true)  
 図5 原画像(pengin)

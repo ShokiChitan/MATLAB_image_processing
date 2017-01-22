@@ -5,7 +5,7 @@
 ORG=imread('../images/ahiru.png'); % 原画像の入力  
 imagesc(ORG); axis image; % 画像の表示
 
-によって，原画像を読み込み，表示した結果を図１に示す．
+によって，原画像を読み込み，表示した結果を図1に示す．
 
 ![原画像](https://github.com/ShokiChitan/MATLAB_image_processing/blob/master/%E8%AA%B2%E9%A1%8C1/images/ahiru.png?raw=true)  
 図1 原画像(ahiru)
@@ -15,7 +15,7 @@ imagesc(ORG); axis image; % 画像の表示
 IMG = imresize(ORG,0.5); % 画像の縮小  
 IMG2 = imresize(IMG,2,'box'); % 画像の拡大
 
-1/2サンプリングの結果を図２に示す．
+1/2サンプリングの結果を図2に示す．
 
 ![原画像](https://github.com/ShokiChitan/MATLAB_image_processing/blob/master/%E8%AA%B2%E9%A1%8C1/images/a1.jpg?raw=true)  
 図2 1/2サンプリング
@@ -25,7 +25,7 @@ IMG2 = imresize(IMG,2,'box'); % 画像の拡大
 IMG = imresize(ORG,0.5); % 画像の縮小  
 IMG2 = imresize(IMG,2,'box'); % 画像の拡大
 
-とする．1/4サンプリングの結果を図３に示す．
+とする．1/4サンプリングの結果を図3に示す．
 
 ![原画像](https://github.com/ShokiChitan/MATLAB_image_processing/blob/master/%E8%AA%B2%E9%A1%8C1/images/a2.jpg?raw=true)  
 図3 1/4サンプリング
