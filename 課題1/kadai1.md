@@ -49,7 +49,7 @@ IMG2 = imresize(IMG,2,'box'); % 画像の拡大
 ![原画像](https://github.com/ShokiChitan/MATLAB_image_processing/blob/master/%E8%AA%B2%E9%A1%8C1/images/a6.jpg?raw=true)  
 図7 1/64サンプリング
 
-同様に，フリー画像「pengin」(縦531画素，横800画素のディジタルカラー画像)を原画像(図8)としてサンプリングを行った結果を図9～14に示す．
+同様に，フリー画像「pengin」(縦1066画素，横1600画素のディジタルカラー画像)を原画像(図8)としてサンプリングを行った結果を図9～14に示す．
 
 ![原画像](https://github.com/ShokiChitan/MATLAB_image_processing/blob/master/%E8%AA%B2%E9%A1%8C1/images/pengin.png?raw=true)  
 図8 原画像(pengin)
